@@ -1,0 +1,13 @@
+:root{
+    --bg-color:orange;
+    --bg-color-light:orange;
+    --bg-color-lightest:orange;
+
+    --font-color:pink;
+    --font-color-light:pink;
+    --font-color-lightest:pink;
+
+    --accent-1:blue;
+    --accent-2:blue;
+    --accent-3:blue;
+}
