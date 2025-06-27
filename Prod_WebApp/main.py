@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import Aer
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template
 
 
 # Quantum Stuff
@@ -40,8 +40,12 @@ app = Flask(__name__)
 @app.route('/api/rollDie', methods = ["GET"])
 def rollDieEndpoint():
     if request.method == "GET":
-        return jsonify({'rollResult':str(rollDice(transpiled_circuit=transpiled_circuit))})
+        return str(rollDice(transpiled_circuit=transpiled_circuit))
     
+@app.route('/', methods = ["GET"])
+def home():
+    if request.method == "GET":
+        return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=80)
