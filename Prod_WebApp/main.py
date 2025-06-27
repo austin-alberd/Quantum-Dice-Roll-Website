@@ -11,6 +11,7 @@ from qiskit import QuantumCircuit, transpile
 from qiskit_aer import Aer
 
 from flask import Flask, request, render_template
+from flask_cors import CORS
 
 
 # Quantum Stuff
@@ -35,12 +36,13 @@ print(rollDice(transpiled_circuit=transpiled_circuit))
 
 #API Stuff
 app = Flask(__name__)
+CORS(app,origins=["*"])
 
 
 @app.route('/api/rollDie', methods = ["GET"])
 def rollDieEndpoint():
     if request.method == "GET":
-        return str(rollDice(transpiled_circuit=transpiled_circuit))
+        return f"<h2>Your Result Is: {str(rollDice(transpiled_circuit=transpiled_circuit))}<h2>"
     
 @app.route('/', methods = ["GET"])
 def home():
@@ -48,4 +50,4 @@ def home():
         return render_template("index.html")
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=80)
+    app.run(debug=False, host="0.0.0.0", port=80)

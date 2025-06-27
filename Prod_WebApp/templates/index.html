@@ -71,10 +71,17 @@
             background-color: var(--accent-3-hover);
         }
 
+        #resultArea{
+            border: 0.25rem solid var(--accent-2);
+            width: 25%;
+            padding:1rem;
+        }
+
     </style>
 
     <head>
         <meta charset="UTF-8">
+        <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js" integrity="sha384-t4DxZSyQK+0Uv4jzy5B0QyHyWQD2GFURUmxKMBVww9+e2EJ0ei/vCvv7+79z0fkr" crossorigin="anonymous"></script>
         <title>Quantum Dice Roll 🎲</title>
@@ -84,10 +91,10 @@
             <h1>Quantum Dice Roll</h1>
             <p>Roll the dice, but in a quantum way!</p>
             <div style = "margin-top:8rem;">
-                <button id = "rollButton" hx-get="http://127.0.0.1/api/rollDie">Roll the Dice 🎲</button>
+                <button id = "rollButton" hx-get="/api/rollDie" hx-target="#resultArea">Roll the Dice 🎲</button>
             </div>
-            <div id="resultArea">
-
+            <div id="resultArea" style="margin-top:1rem;">
+                <p>Click the Roll the Dice button</p>
             </div>
         </body>
     </center>
